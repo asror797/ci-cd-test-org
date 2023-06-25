@@ -14,7 +14,7 @@ import swaggerUi from 'swagger-ui-express'
 class App {
 
    public app: express.Application
-   public port:number = 2003
+   public port:number = 1717
 
 
    constructor(routes: Routes[]){

@@ -16,8 +16,8 @@ jobs:
         key: ${{ secrets.SSH_KEY }}
         port: 22
         script: |
-          cd ~/Projects/showroom-server-mongo/
-    
+          cd ~/Projects/ci-cd-test/
+          git pull
           npm i
           npm run build
           pm2 restart 9
