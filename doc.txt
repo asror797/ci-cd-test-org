@@ -1,0 +1,69 @@
+Company
+    types 'factory', 'showroom', 'supplier'
+User 
+    role 'admin' , 'seller', ...
+
+
+Tissue 
+    TissueConf 
+
+
+Furniture Type 
+
+Model 
+    Configurations 
+
+    Type 
+
+
+
+
+
+
+-----------------------------------------------------------------
+* Furniture Type 
+    GET  /ftype  --- get all type of furniture 
+    POST /ftype  --- create type 
+
+
+-----------------------------------------------------------------
+* Tissue 
+    GET  /tissue  --- get all tissue 
+    POST /tissue  --- create new tissue 
+    
+    * TissueConf 
+        GET  /tissue/conf  --- get all conf of tissue 
+        POST /tissue/conf  --- create new conf for tissue 
+
+
+-----------------------------------------------------------------
+* Model 
+    GET  /model  --- get all model 
+    POST /model  --- create new model 
+
+    * Conf 
+        GET  /conf  --- get all conf of model 
+        POST /conf  --- create new conf for model  
+
+
+-----------------------------------------------------------------
+* Order 
+    GET  /order  ---
+    POST /order  --- 
+
+    * Complect 
+
+
+        * Collection
+         
+
+            * Configurtions 
+
+
+
+
+
+
+###
+
+GET By Model Type +

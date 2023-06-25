@@ -1,0 +1,13 @@
+@baseURL = http://localhost:5050/auth
+
+
+
+
+### LOGIN
+POST {{baseURL}}/login
+Content-Type: application/json 
+
+{
+    "contact":"900070770", 
+    "password":"12345678"
+}

@@ -1,0 +1,25 @@
+@baseURL = http://localhost:5050/complect 
+
+
+### GET 
+GET {{baseURL}}
+Content-Type: application/json 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDQwMmQ5Zjc2ZjQ3M2Y0YTU0ZDQ1ZTciLCJwaG9uZV9udW1iZXIiOiI5MDAwNzA3NzAiLCJwYXNzd29yZCI6IiQyYiQxMCRsMVRSNGMwOFIyTlJUMjJhVTY2OGZ1bFZCMGZRLkt3bEhaS3dHbkxoUk5veDBYODNidFZMUyIsImlzX2FjdGl2ZSI6dHJ1ZSwiaXNfZGVsZXRlZCI6ZmFsc2UsInJvbGUiOiI2NDNkZjFmNDFiYzA5NjYzNjM1NTM2N2MiLCJzdGFmZiI6IjY0NDAyZDlmNzZmNDczZjRhNTRkNDVlNSIsImNyZWF0ZWRBdCI6IjIwMjMtMDQtMTlUMTg6MDY6MjMuNzk3WiIsInVwZGF0ZWRBdCI6IjIwMjMtMDQtMTlUMTg6MDY6MjMuNzk3WiIsIl9fdiI6MCwiaWF0IjoxNjgyODE0MzA1fQ.OeCtqRxFxuQ3gTGFJAhgsr7OeJDtZ0ZwHdtesFR0d50
+
+
+
+### CREATE
+POST {{baseURL}}
+Content-Type: application/json 
+
+{
+    "tissue":"64489ac87f18013bfbf3494d",
+    "leg":"644b5d5abab858d167b7ed48",
+    "model":"643e06908402e362d017f4d8",
+    "collections": [
+        {
+            "collection":"644b582abb8fc780ace63231",
+            "quantity": 2
+        }
+    ]
+}

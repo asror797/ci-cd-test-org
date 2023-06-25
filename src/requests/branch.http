@@ -1,0 +1,19 @@
+@baseURL = http://localhost:5050/branch
+
+
+### GET ALL BRANCHES
+GET {{baseURL}}
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDQwMmQ5Zjc2ZjQ3M2Y0YTU0ZDQ1ZTciLCJwaG9uZV9udW1iZXIiOiI5MDAwNzA3NzAiLCJwYXNzd29yZCI6IiQyYiQxMCRsMVRSNGMwOFIyTlJUMjJhVTY2OGZ1bFZCMGZRLkt3bEhaS3dHbkxoUk5veDBYODNidFZMUyIsImlzX2FjdGl2ZSI6dHJ1ZSwiaXNfZGVsZXRlZCI6ZmFsc2UsInJvbGUiOiI2NDNkZjFmNDFiYzA5NjYzNjM1NTM2N2MiLCJzdGFmZiI6IjY0NDAyZDlmNzZmNDczZjRhNTRkNDVlNSIsImNyZWF0ZWRBdCI6IjIwMjMtMDQtMTlUMTg6MDY6MjMuNzk3WiIsInVwZGF0ZWRBdCI6IjIwMjMtMDQtMTlUMTg6MDY6MjMuNzk3WiIsIl9fdiI6MCwiaWF0IjoxNjgyODEyODE1fQ.FcU63-kau-Izw2-qobpvE_sd_DbXql5V23vH8FdBC6I
+
+
+
+### CREATE BRANCH
+POST {{baseURL}}
+Content-Type: application/json
+
+{
+    "name":"o'rtasaroy",
+    "branch_type":"factory"
+}
+

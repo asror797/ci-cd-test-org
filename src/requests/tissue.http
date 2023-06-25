@@ -1,0 +1,49 @@
+@baseURL = http://localhost:5050/tissue 
+
+
+### GET 
+GET {{baseURL}}
+
+
+
+### CREATE
+POST {{baseURL}}
+Content-Type: application/json
+
+{
+    "name":"test2",
+    "cost":541200,
+    "price1":454545,
+    "price2":58000
+}
+
+
+
+
+### GET 
+GET {{baseURL}}/conf  
+
+
+
+### CREATE
+POST {{baseURL}}/conf 
+Content-Type: application/json
+
+{
+    "name":" test",
+    "color":"test color",
+    "hex_color":"hex test color",
+    "tissue":"6449382fd65153c2d6bdd596"
+}
+
+
+### UPDATE
+PUT {{baseURL}}
+Content-Type: application/json
+
+{   
+    "id":"6448987261e41b40a04efe5d",
+    "cost":15000,
+    "price1":75000,
+    "price2":79500    
+}

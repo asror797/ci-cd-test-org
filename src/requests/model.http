@@ -1,0 +1,31 @@
+@baseURL = http://localhost:5050/model
+
+
+### GET ALL MODELS
+GET {{baseURL}}
+Content-Type: application/json
+
+
+
+### GET BY TYPE
+GET {{baseURL}}?type=644a17b3ff5c9d0cd64e8e6d
+Content-Type: application/json 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDQwMmQ5Zjc2ZjQ3M2Y0YTU0ZDQ1ZTciLCJwaG9uZV9udW1iZXIiOiI5MDAwNzA3NzAiLCJwYXNzd29yZCI6IiQyYiQxMCRYY3ZKZnJnLkR0L2J5Z1FMUS5RcEIuOXhsNmUxQk5FcVd6QlFWQlpmSHVDcmNHS1g3aENLZSIsImlzX2FjdGl2ZSI6dHJ1ZSwiaXNfZGVsZXRlZCI6ZmFsc2UsInJvbGUiOiI2NDNkZjFmNDFiYzA5NjYzNjM1NTM2N2MiLCJzdGFmZiI6IjY0NDAyZDlmNzZmNDczZjRhNTRkNDVlNSIsImNyZWF0ZWRBdCI6IjIwMjMtMDQtMTlUMTg6MDY6MjMuNzk3WiIsInVwZGF0ZWRBdCI6IjIwMjMtMDQtMzBUMDI6MTU6NTEuMjQ3WiIsIl9fdiI6MCwiaWF0IjoxNjg1NjI0ODk0fQ.Im8ZkzB4qyymlLMnm-yNVO5_xA-qwpyqH2c2klTSlTw
+
+
+
+
+### CREATE NEW MODEL
+POST {{baseURL}}
+Content-Type: application/json
+
+{
+    "name":"Stol",
+    "price1":7000000,
+    "price2":7500000,
+    "sale":8000000,
+    "seller_percent1":8,
+    "seller_percent2":10,
+    "type":"6447681f724f6244664484f9",
+    "org":"643df306912dca5748725700"
+}

@@ -1,0 +1,991 @@
+swagger: "2.0"
+info:
+  title: Your API Title
+  version: 1.0.0
+  description: Your API Description
+
+tags:
+  - name: Auth
+    description: Authentication-related endpoints
+  - name: Branch
+    description: Branch-related endpoints
+  - name: User
+    description: User-related endpoints
+  - name: Model
+    description: Model-related endpoints
+  - name: Complect
+    description: Complect-related endpoints
+  - name: Collection
+    description: Collection-related endpoints
+  - name: Type
+    description: Type-related endpoint
+  - name: Leg
+    description: Leg-related endpoint
+  - name: Order
+    description: Order-related endpoints
+  - name: Role
+    description: Role-related endpoints
+  - name: TissueConf
+    description: TissueConf-related endpoints
+  - name: Tissue
+    description: Tissue-related endpoints
+  - name: Config
+    description: Conf-related endpoints
+
+
+securityDefinitions:
+  bearerAuth:
+    type: apiKey
+    name: Authorization
+    in: header
+
+paths:
+  /auth/login:
+    post:
+      summary: User login
+      tags:
+        - Auth
+      parameters:
+        - name: body
+          in: body
+          description: User credentials
+          required: true
+          schema:
+            type: object
+            properties:
+              username:
+                type: string
+              password:
+                type: string
+      responses:
+        200:
+          description: Successful login
+          schema:
+            type: object
+            properties:
+              token:
+                type: string
+
+  /users:
+    get:
+      summary: Get all users
+      tags:
+        - User
+      security:
+        - bearerAuth: []
+      responses:
+        200:
+          description: Successful operation
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/User'
+
+    post:
+      summary: Create a new user
+      tags:
+        - User
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: body
+          in: body
+          description: User data
+          required: true
+          schema:
+            $ref: '#/definitions/UserInput'
+      responses:
+        201:
+          description: User created
+          schema:
+            $ref: '#/definitions/User'
+
+  /users/{id}:
+    get:
+      summary: Get a user by ID
+      tags:
+        - User
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          description: User ID
+          required: true
+          type: integer
+      responses:
+        200:
+          description: Successful operation
+          schema:
+            $ref: '#/definitions/User'
+
+  /branch:
+    get:
+      summary: Get paginated branches
+      description: Retrieve paginated branches.
+      tags:
+        - Branch
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: page
+          in: query
+          description: Page number
+          required: false
+          type: integer
+        - name: limit
+          in: query
+          description: Number of items per page
+          required: false
+          type: integer
+      responses:
+        200:
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Branch"
+    post:
+      summary: Create a new branch
+      description: Create a new branch.
+      tags:
+        - Branch
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: branch
+          in: body
+          description: Branch object
+          required: true
+          schema:
+            $ref: "#/definitions/Branch"
+      responses:
+        201:
+          description: Branch created
+          schema:
+            $ref: "#/definitions/Branch"
+
+  /branch/all:
+    get:
+      summary: Get all branches
+      description: Retrieve all branches.
+      tags:
+        - Branch
+      security:
+        - bearerAuth: []
+      responses:
+        200:
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Branch"
+
+
+  /collection:
+    get:
+      summary: Get all collections
+      description: Retrieve all collections.
+      tags:
+        - Collection
+      security:
+        - bearerAuth: []
+      responses:
+        200:
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Collection"
+    post:
+      summary: Create a new collection
+      description: Create a new collection.
+      tags:
+        - Collection
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: collection
+          in: body
+          description: Collection object
+          required: true
+          schema:
+            $ref: "#/definitions/Collection"
+      responses:
+        201:
+          description: Created
+          schema:
+            $ref: "#/definitions/Collection"
+
+  /complect:
+    get:
+      summary: Get all complects
+      tags:
+        - Complect
+      security:
+        - bearerAuth: []
+      responses:
+        200:
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Complect"
+    post:
+      summary: Create a new complect
+      tags:
+        - Complect
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: complect
+          in: body
+          description: Complect object
+          required: true
+          schema:
+            $ref: "#/definitions/ComplectInput"
+      responses:
+        201:
+          description: Created
+          schema:
+            $ref: "#/definitions/Complect"
+
+  /conf:
+    get:
+      summary: Get all configurations
+      tags:
+        - Config
+      security:
+        - bearerAuth: []
+      description: Retrieve all configurations.
+      responses:
+        200:
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Config"
+
+    post:
+      summary: Create a new configuration
+      tags:
+        - Config
+      security:
+        - bearerAuth: []
+      description: Create a new configuration.
+      parameters:
+        - name: config
+          in: body
+          description: Configuration object
+          required: true
+          schema:
+            $ref: "#/definitions/ConfigInput"
+      responses:
+        201:
+          description: Created
+          schema:
+            $ref: "#/definitions/Config"
+
+  /type:
+    get:
+      summary: Get all types
+      tags:
+        - Type
+      security:
+        - bearerAuth: []
+      responses:
+        200:
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Type"
+
+    post:
+      summary: Create a new type
+      tags:
+        - Type
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: type
+          in: body
+          description: Type object
+          required: true
+          schema:
+            $ref: "#/definitions/TypeInput"
+      responses:
+        201:
+          description: Created
+          schema:
+            $ref: "#/definitions/Type"
+
+  /leg:
+    get:
+      summary: Get all legs
+      tags:
+        - Leg
+      security:
+        - bearerAuth: []
+      responses:
+        200:
+          description: Successful operation
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Leg'
+
+    post:
+      summary: Create a new leg
+      tags:
+        - Leg
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: body
+          in: body
+          description: Leg data
+          required: true
+          schema:
+            $ref: '#/definitions/LegInput'
+      responses:
+        201:
+          description: Leg created
+          schema:
+            $ref: '#/definitions/Leg'
+  /model:
+    get:
+      summary: Get all models
+      tags:
+        - Model
+      security:
+        - bearerAuth: []
+      responses:
+        200:
+          description: Successful operation
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Model'
+    post:
+      summary: Create a new model
+      tags:
+        - Model
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: body
+          in: body
+          description: Model data
+          required: true
+          schema:
+            $ref: '#/definitions/ModelInput'
+      responses:
+        201:
+          description: Model created
+          schema:
+            $ref: '#/definitions/Model'
+
+  /model/{typeId}:
+    get:
+      summary: Get models by type
+      tags:
+        - Model
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: typeId
+          in: path
+          description: Type ID
+          required: true
+          type: string
+      responses:
+        200:
+          description: Successful operation
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Model'
+
+  /orders:
+    get:
+      summary: Get all orders
+      tags:
+        - Order
+      security:
+        - bearerAuth: []
+      responses:
+        200:
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Order"
+
+    post:
+      summary: Create a new order
+      tags:
+        - Order
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: body
+          in: body
+          description: Order data
+          required: true
+          schema:
+            $ref: "#/definitions/OrderInput"
+      responses:
+        201:
+          description: Order created
+          schema:
+            $ref: "#/definitions/Order"
+
+  /role:
+    get:
+      summary: Get pagination roles
+      tags:
+        - Role
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: page
+          in: query
+          description: Page number 
+          required: false
+          type: integer
+        - name: limit
+          in: query
+          description: Number items of per page
+          required: false
+          type: integer
+      responses:
+        200: 
+          description: Role pagination
+          schema: 
+            type: array
+            items:
+              $ref: "#/definitions/Role"
+
+    post:
+      summary: Create a new roles
+      tags: 
+        - Role
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: body
+          in: body
+          description: Role data
+          required: true
+          schema:
+            $ref: "#/definitions/Role"
+      responses:
+        201: 
+          description: Role created
+          schema:
+            $ref: "#/definitions/Role"
+  /role/all:
+    get:
+      summary: Get all roles
+      tags:
+        - Role
+      security:
+        - bearerAuth: []
+      responses:
+        200:
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Role"
+
+  /tissueconfs:
+    get:
+      summary: Get all TissueConfs
+      tags:
+        - TissueConf
+      security:
+        - bearerAuth: []
+      responses:
+        200:
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/TissueConf"
+
+    post:
+      summary: Create a new TissueConf
+      tags:
+        - TissueConf
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: body
+          in: body
+          description: TissueConf data
+          required: true
+          schema:
+            $ref: "#/definitions/TissueConfInput"
+      responses:
+        201:
+          description: TissueConf created
+          schema:
+            $ref: "#/definitions/TissueConf"
+
+  /tissues:
+    get:
+      summary: Get all Tissues
+      tags:
+        - Tissue
+      security:
+        - bearerAuth: []
+      responses:
+        200:
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Tissue"
+
+    post:
+      summary: Create a new Tissue
+      tags:
+        - Tissue
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: body
+          in: body
+          description: Tissue data
+          required: true
+          schema:
+            $ref: "#/definitions/TissueInput"
+      responses:
+        201:
+          description: Tissue created
+          schema:
+            $ref: "#/definitions/Tissue"
+
+  /tissues/{id}:
+    put:
+      summary: Update a Tissue
+      tags:
+        - Tissue
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          description: Tissue ID
+          required: true
+          type: string
+        - name: body
+          in: body
+          description: Updated Tissue data
+          required: true
+          schema:
+            $ref: "#/definitions/TissueInput"
+      responses:
+        200:
+          description: Tissue updated
+          schema:
+            $ref: "#/definitions/Tissue"
+
+
+definitions:
+  User:
+    type: object
+    properties:
+      id:
+        type: integer
+      username:
+        type: string
+      email:
+        type: string
+
+  UserInput:
+    type: object
+    properties:
+      username:
+        type: string
+      email:
+        type: string
+      password:
+        type: string
+
+  Branch:
+    type: object
+    properties:
+      name:
+        type: string
+      branch_type:
+        type: string
+        enum:
+          - OrgType
+
+  Collection:
+    type: object
+    properties:
+      cost:
+        type: number
+      conf:
+        type: string
+        format: ObjectId
+
+  Complect:
+    type: object
+    properties:
+      is_accepted:
+        type: boolean
+      leg:
+        type: string
+        format: ObjectId
+      tissue:
+        type: string
+        format: ObjectId
+      model:
+        type: string
+        format: ObjectId
+      collections:
+        type: array
+        items:
+          $ref: "#/definitions/CollectionItem"
+    required:
+      - leg
+      - tissue
+      - model
+
+  CollectionItem:
+    type: object
+    properties:
+      collection:
+        type: string
+        format: ObjectId
+      quantity:
+        type: number
+    required:
+      - collection
+      - quantity
+
+  ComplectInput:
+    type: object
+    properties:
+      is_accepted:
+        type: boolean
+      leg:
+        type: string
+        format: ObjectId
+      tissue:
+        type: string
+        format: ObjectId
+      model:
+        type: string
+        format: ObjectId
+      collections:
+        type: array
+        items:
+          $ref: "#/definitions/CollectionItemInput"
+
+  CollectionItemInput:
+    type: object
+    properties:
+      collection:
+        type: string
+        format: ObjectId
+      quantity:
+        type: number
+    required:
+      - collection
+      - quantity
+
+  Config:
+    type: object
+    properties:
+      _id:
+        type: string
+      name:
+        type: string
+      cost:
+        type: number
+      title:
+        type: string
+      running_qty:
+        type: number
+      model:
+        type: string
+
+  ConfigInput:
+    type: object
+    properties:
+      name:
+        type: string
+        required: true
+      cost:
+        type: number
+        default: 0
+      title:
+        type: string
+      running_qty:
+        type: number
+      model:
+        type: string
+        required: true
+
+  Type:
+    type: object
+    properties:
+      _id:
+        type: string
+      name:
+        type: string
+      createdAt:
+        type: string
+        format: date-time
+      updatedAt:
+        type: string
+        format: date-time
+
+  TypeInput:
+    type: object
+    properties:
+      name:
+        type: string
+
+  Leg:
+    type: object
+    properties:
+      _id:
+        type: string
+      name:
+        type: string
+      createdAt:
+        type: string
+        format: date-time
+      updatedAt:
+        type: string
+        format: date-time
+
+  LegInput:
+    type: object
+    properties:
+      name:
+        type: string
+  
+  Model:
+    type: object
+    properties:
+      _id:
+        type: string
+      name:
+        type: string
+      price1:
+        type: number
+      price2:
+        type: number
+      sale:
+        type: number
+      seller_percent1:
+        type: number
+      seller_percent2:
+        type: number
+      collections:
+        type: array
+        items:
+          $ref: '#/definitions/ModelCollection'
+      type:
+        type: string
+      org:
+        type: string
+      createdAt:
+        type: string
+        format: date-time
+      updatedAt:
+        type: string
+        format: date-time
+
+  ModelInput:
+    type: object
+    properties:
+      name:
+        type: string
+      price1:
+        type: number
+      price2:
+        type: number
+      sale:
+        type: number
+      seller_percent1:
+        type: number
+      seller_percent2:
+        type: number
+      collections:
+        type: array
+        items:
+          $ref: '#/definitions/CollectionInput'
+      type:
+        type: string
+      org:
+        type: string
+
+  ModelCollection:
+    type: object
+    properties:
+      _id:
+        type: string
+
+  CollectionInput:
+    type: object
+    properties:
+      _id:
+        type: string
+
+  Order:
+    type: object
+    properties:
+      id:
+        type: string
+      customer:
+        $ref: "#/definitions/Customer"
+      items:
+        type: array
+        items:
+          $ref: "#/definitions/OrderItem"
+      createdAt:
+        type: string
+        format: date-time
+      updatedAt:
+        type: string
+        format: date-time
+
+  OrderInput:
+    type: object
+    properties:
+      customer:
+        type: string
+      items:
+        type: array
+        items:
+          $ref: "#/definitions/OrderItemInput"
+
+  OrderItem:
+    type: object
+    properties:
+      product:
+        type: string
+      quantity:
+        type: number
+
+  OrderItemInput:
+    type: object
+    properties:
+      product:
+        type: string
+      quantity:
+        type: number
+
+  Customer:
+    type: object
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+      email:
+        type: string
+
+  Role:
+    type: object
+    properties:
+      id:
+        type: string
+      name: 
+        type: string
+      description::
+        type: string
+      createdAt:
+        type: string
+        format: date-time
+      updatedAt:
+        type: string
+        format: date-time
+  RoleInput:
+    type: object
+    properties:
+      name:
+        type: string
+      description:
+        type: string
+
+  TissueConf:
+    type: object
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+      color:
+        type: string
+      hex_color:
+        type: string
+      tissue:
+        $ref: "#/definitions/TissueConfTissue"
+      createdAt:
+        type: string
+        format: date-time
+      updatedAt:
+        type: string
+        format: date-time
+
+  TissueConfInput:
+    type: object
+    properties:
+      name:
+        type: string
+      color:
+        type: string
+      hex_color:
+        type: string
+      tissue:
+        type: string
+
+  TissueConfTissue:
+    type: object
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+
+  Tissue:
+    type: object
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+      cost:
+        type: number
+      price1:
+        type: number
+      price2:
+        type: number
+      createdAt:
+        type: string
+        format: date-time
+      updatedAt:
+        type: string
+        format: date-time
+
+  TissueInput:
+    type: object
+    properties:
+      name:
+        type: string
+      cost:
+        type: number
+      price1:
+        type: number
+      price2:
+        type: number

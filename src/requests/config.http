@@ -1,0 +1,19 @@
+@BaseUrl = http://localhost:5050/conf 
+
+
+
+### GET
+GET {{BaseUrl}}
+
+
+### CREATE
+POST {{BaseUrl}}
+Content-Type: application/json
+
+{
+    "name":"test 1",
+    "cost":57000,
+    "title":"test title for configuration",
+    "running_qty":5,
+    "model":"643e06908402e362d017f4d8"
+}

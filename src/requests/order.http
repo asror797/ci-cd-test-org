@@ -1,0 +1,28 @@
+@baseURL = http://localhost:5050/order 
+
+
+### GET 
+GET {{baseURL}}
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDQwMmQ5Zjc2ZjQ3M2Y0YTU0ZDQ1ZTciLCJwaG9uZV9udW1iZXIiOiI5MDAwNzA3NzAiLCJwYXNzd29yZCI6IiQyYiQxMCRYY3ZKZnJnLkR0L2J5Z1FMUS5RcEIuOXhsNmUxQk5FcVd6QlFWQlpmSHVDcmNHS1g3aENLZSIsImlzX2FjdGl2ZSI6dHJ1ZSwiaXNfZGVsZXRlZCI6ZmFsc2UsInJvbGUiOiI2NDNkZjFmNDFiYzA5NjYzNjM1NTM2N2MiLCJzdGFmZiI6IjY0NDAyZDlmNzZmNDczZjRhNTRkNDVlNSIsImNyZWF0ZWRBdCI6IjIwMjMtMDQtMTlUMTg6MDY6MjMuNzk3WiIsInVwZGF0ZWRBdCI6IjIwMjMtMDQtMzBUMDI6MTU6NTEuMjQ3WiIsIl9fdiI6MCwiaWF0IjoxNjg1NjIxMTg5fQ.QzQ7ZDghygB8eHKV96gFY8lFxHtLW2KLEOZZYrAzn7Q
+
+
+
+### POST 
+POST {{baseURL}}
+Content-Type: application/json
+
+{
+    "delivery_date":"16-06-2023",
+    "status":"new",
+    "seller":"643df345912dca5748725708",
+    "company":"643df2ed912dca57487256fd",
+    "complects": [
+        "644c4a8cc309c26c335d85af"
+    ]
+}
+
+### GET
+GET https://backend4devs.uz/food/
+Content-Type: application/json 
+Authorization: Bearer TELEGRAM_BOT 
