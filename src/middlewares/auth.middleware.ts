@@ -17,6 +17,8 @@ const authMiddleware = async(req:RequestWithUser,res:Response,next:NextFunction)
 
         console.log(url)
 
+        if(url === '/') return res.json({ message:"Salam alaykum",status:200});
+
         if(url === '/auth/login' || url === '/api-docs') {
             return next();
         }else {
